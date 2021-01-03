@@ -1,0 +1,42 @@
+.wordContainer {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40vw;
+  height: 10vh;
+}
+
+.wordToWrite {
+  margin: auto;
+  display: block;
+  background-color: red;
+  text-align: center;
+  border: 0;
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.inputField {
+  margin: auto;
+  display: block;
+  color: white;
+  border: 0;
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: center;
+  height: 50%;
+  width: 40vw;
+  border-bottom: 1px solid;
+  border-color: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(2, 0, 36, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.inputField :focus {
+  background-color: rgba(0, 0, 0, 1);
+}
