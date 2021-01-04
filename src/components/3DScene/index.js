@@ -16,6 +16,8 @@ function Scene(props) {
         <MeshDistortMaterial
           attach="material"
           color={props.correctLetter}
+          transparent
+          opacity={0.5}
           distort={0.5} // Strength, 0 disables the effect (default=1)
           speed={1} // Speed (default=1)
         />{' '}
