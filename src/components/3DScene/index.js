@@ -1,33 +1,32 @@
-import ReactDOM from 'react-dom'
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame } from 'react-three-fiber'
-import {Sphere, OrbitControls,MeshDistortMaterial} from 'drei'
+import ReactDOM from 'react-dom';
+import React, {useRef, useState} from 'react';
+import {Canvas, useFrame} from 'react-three-fiber';
+import {Sphere, OrbitControls, MeshDistortMaterial} from 'drei';
 import './style.css';
-import * as THREE from 'three'
+import * as THREE from 'three';
+import {connect} from 'react-redux';
 
-function Scene(){
-    return(
-<Canvas>
-        <OrbitControls></OrbitControls>
-        <directionalLight
-        intensity={10}
-        position={[5, 5, 5]}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        castShadow
-      />      
-        <Sphere args={[1,128,128]} position={[0,1,0]}>
+function Scene(props) {
+  return (
+    <Canvas>
+      <OrbitControls></OrbitControls>
+      <pointLight position={[0, -1, 0]} intensity={1}></pointLight>
+      <ambientLight></ambientLight>
+      <Sphere args={[1, 128, 128]} position={[0, 1, 0]}>
         <MeshDistortMaterial
-           attach="material"
-           color={[1,1,1]}
-           transparent={true}
-           side={THREE.DoubleSide}
-           opacity={0.5}
-           distort={1} // Strength, 0 disables the effect (default=1)
-           speed={2} // Speed (default=1)
-  />        </Sphere>     
-</Canvas>
-    )
+          attach="material"
+          color={props.correctLetter}
+          distort={0.5} // Strength, 0 disables the effect (default=1)
+          speed={1} // Speed (default=1)
+        />{' '}
+      </Sphere>
+    </Canvas>
+  );
 }
 
-export default Scene
+const mapStateToProps = (state) => ({
+  correctLetter: state.correctLetter,
+});
+
+const connectedScene = connect(mapStateToProps)(Scene);
+export default connectedScene;
